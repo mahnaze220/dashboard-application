@@ -2,9 +2,13 @@ package com.sample.dto;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 /**
  * This DTO contains response data of fetched dimensions. 
@@ -13,27 +17,13 @@ import io.swagger.annotations.ApiModelProperty;
  * @Jan 31, 2020
  */
 
+@Data
+@RequiredArgsConstructor
 public class CustomerDimensionResponse {
 
+	@NotNull
 	@JsonProperty("team")
 	@ApiModelProperty(notes = "team")
 	private List<String> data;
-
-	public CustomerDimensionResponse() {
-		super();
-	}
-
-	public CustomerDimensionResponse(List<String> data) {
-		super();
-		this.data = data;
-	}
-
-	public List<String> getData() {
-		return data;
-	}
-
-	public void setData(List<String> data) {
-		this.data = data;
-	}
 	
 }

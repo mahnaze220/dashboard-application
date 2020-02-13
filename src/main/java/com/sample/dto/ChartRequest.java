@@ -7,6 +7,10 @@ import com.sample.exception.DashboardException;
 import com.sample.exception.ExceptionType;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 /**
  * This DTO contains request data for getting chart data. 
@@ -15,21 +19,20 @@ import io.swagger.annotations.ApiModelProperty;
  * @Jan 31, 2020
  */
 
+@Data
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class ChartRequest {
 
+	@NonNull
 	@JsonProperty("dimensions")
 	@ApiModelProperty(notes = "dimensions")
 	private List<String> dimensions;
 
+	@NonNull
 	@JsonProperty("measures")
 	@ApiModelProperty(notes = "measures")
 	private List<String> measures;
-
-	public ChartRequest(List<String> dimensions, List<String> measures) {
-		super();
-		this.dimensions = dimensions;
-		this.measures = measures;
-	}
 
 	/*
 	 * Validate chart request 
@@ -42,21 +45,5 @@ public class ChartRequest {
 			DashboardException.throwException(ExceptionType.INVALID_INPUT_DATA_EXCEPTION, 
 					"Measures must be contains between 1 and 3 values");
 		}
-	}
-
-	public List<String> getDimensions() {
-		return dimensions;
-	}
-
-	public void setDimensions(List<String> dimensions) {
-		this.dimensions = dimensions;
-	}
-
-	public List<String> getMeasures() {
-		return measures;
-	}
-
-	public void setMeasures(List<String> measures) {
-		this.measures = measures;
 	}
 }

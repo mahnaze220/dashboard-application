@@ -1,10 +1,14 @@
 package com.sample.dto;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sample.exception.DashboardException;
 import com.sample.exception.ExceptionType;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * This DTO contains request data for report statistics. 
@@ -13,23 +17,24 @@ import io.swagger.annotations.ApiModelProperty;
  * @Jan 31, 2020
  */
 
+@Data
+@NoArgsConstructor
 public class ReportRequest {
 
+	@NotNull
 	@JsonProperty("last")
 	@ApiModelProperty(notes = "last")
 	private Integer last;
 
+	@NotNull
 	@JsonProperty("timeUnit")
 	@ApiModelProperty(notes = "timeUnit")
 	private String timeUnit;
 
+	@NotNull
 	@JsonProperty("mavgPoints")
 	@ApiModelProperty(notes = "mavgPoints")
 	private Integer movingPoints;
-
-	public ReportRequest() {
-		super();
-	}
 
 	/*
 	 * Validate report request
@@ -41,29 +46,5 @@ public class ReportRequest {
 			throw DashboardException.throwException(ExceptionType.INVALID_INPUT_DATA_EXCEPTION, 
 					"Time unit value can be minutes or seconds");
 		}
-	}
-
-	public Integer getLast() {
-		return last;
-	}
-
-	public void setLast(Integer last) {
-		this.last = last;
-	}
-
-	public String getTimeUnit() {
-		return timeUnit;
-	}
-
-	public void setTimeUnit(String timeUnit) {
-		this.timeUnit = timeUnit;
-	}
-
-	public Integer getMovingPoints() {
-		return movingPoints;
-	}
-
-	public void setMovingPoints(Integer movingPoints) {
-		this.movingPoints = movingPoints;
 	}
 }

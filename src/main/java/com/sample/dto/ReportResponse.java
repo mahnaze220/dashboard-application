@@ -5,6 +5,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * This DTO contains response data for report statistics request. 
@@ -13,6 +15,8 @@ import io.swagger.annotations.ApiModelProperty;
  * @Jan 31, 2020
  */
 
+@Data
+@NoArgsConstructor
 public class ReportResponse {
 
 	@JsonProperty("totalRequests")
@@ -31,39 +35,4 @@ public class ReportResponse {
 	@ApiModelProperty(notes = "categories")
 	private List<String> categories;
 
-	public ReportResponse() {
-		super();
-	}
-
-	public Long getTotalRequests() {
-		return totalRequests;
-	}
-
-	public void setTotalRequests(Long totalRequests) {
-		this.totalRequests = totalRequests;
-	}
-
-	public Long getTotalQueries() {
-		return totalQueries;
-	}
-
-	public void setTotalQueries(Long totalQueries) {
-		this.totalQueries = totalQueries;
-	}
-
-	public List<Measure> getStatistics() {
-		return statistics;
-	}
-
-	public void setStatistics(List<Measure> statistics) {
-		this.statistics = statistics;
-	}
-
-	public List<String> getCategories() {
-		return categories;
-	}
-
-	public void setCategories(List<String> categories) {
-		this.categories = categories;
-	}
 }

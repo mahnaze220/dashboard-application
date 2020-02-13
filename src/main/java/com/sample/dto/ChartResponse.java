@@ -2,9 +2,14 @@ package com.sample.dto;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * This DTO contains response data for a chart request. 
@@ -13,39 +18,18 @@ import io.swagger.annotations.ApiModelProperty;
  * @Jan 31, 2020
  */
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ChartResponse {
 
+	@NotNull
 	@JsonProperty("categories")
 	@ApiModelProperty(notes = "categories")
 	private List<String> categories;
 	
+	@NotNull
 	@JsonProperty("series")
 	@ApiModelProperty(notes = "series")
 	private List<Measure> series;
-
-	public ChartResponse() {
-		super();
-	}
-
-	public ChartResponse(List<String> categories, List<Measure> series) {
-		super();
-		this.categories = categories;
-		this.series = series;
-	}
-
-	public List<String> getCategories() {
-		return categories;
-	}
-
-	public void setCategories(List<String> categories) {
-		this.categories = categories;
-	}
-
-	public List<Measure> getSeries() {
-		return series;
-	}
-
-	public void setSeries(List<Measure> series) {
-		this.series = series;
-	}
 }
