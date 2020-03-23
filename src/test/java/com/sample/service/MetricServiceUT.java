@@ -49,8 +49,8 @@ public class MetricServiceUT {
 		reportRequest.setMovingPoints(5);
 		Mono<ReportResponse> resposne = metricServiceSpy.findStatistics(reportRequest);
 		ReportResponse result = resposne.block();
-		Assertions.assertEquals(16, result.getTotalRequests());
-		Assertions.assertEquals(20, result.getTotalQueries());
+		Assertions.assertEquals(16, result.getTotalRequests().longValue());
+		Assertions.assertEquals(20, result.getTotalQueries().longValue());
 		Assertions.assertEquals(2, result.getCategories().size());
 	}
 
@@ -66,8 +66,8 @@ public class MetricServiceUT {
 		reportRequest.setTimeUnit(TimeUnit.SECONDS.getValue());
 		Mono<ReportResponse> resposne = metricServiceSpy.findStatistics(reportRequest);
 		ReportResponse result = resposne.block();
-		Assertions.assertEquals(0, result.getTotalRequests());
-		Assertions.assertEquals(0, result.getTotalQueries());
+		Assertions.assertEquals(0, result.getTotalRequests().longValue());
+		Assertions.assertEquals(0, result.getTotalQueries().longValue());
 	}
 
 	@Test

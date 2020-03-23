@@ -17,6 +17,7 @@ public class ConfigProperties {
 
 	private String dataServiceURI;
 	private String measureServiceURI;
+	private String serviceURI;
 
 	public String getDataServiceURI() {
 		return dataServiceURI;
@@ -29,5 +30,11 @@ public class ConfigProperties {
 	}
 	public void setMeasureServiceURI(String measureServiceURI) {
 		this.measureServiceURI = measureServiceURI;
+	}
+	public String getServiceURI() {
+		return serviceURI;
+	}
+	public void setServiceURI(String serviceURI) {
+		this.serviceURI = serviceURI;
 	}
 }
