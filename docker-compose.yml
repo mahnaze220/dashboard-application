@@ -1,0 +1,19 @@
+version: "2.2"
+services:
+  eureka:
+    image: eureka-server:latest
+    ports:
+      - 8761:8761
+  customer:
+    image: customer-application:latest
+    depends_on:
+      - eureka
+    ports:
+      - 8081:8081
+  dashboard:
+    image: dashboard-application:latest
+    depends_on:
+      - customer
+      - eureka
+    ports:
+      - 8080:8080
